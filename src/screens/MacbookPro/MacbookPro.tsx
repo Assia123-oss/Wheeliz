@@ -39,7 +39,7 @@ const featureItems = [
 
 export const MacbookPro = (): JSX.Element => {
   return (
-    <div className="bg-white w-full min-h-screen flex flex-col" style={{ scrollBehavior: 'smooth' }}>
+    <div className="bg-white w-full min-h-screen flex flex-col cross-platform-fix" style={{ scrollBehavior: 'smooth' }}>
       <section id="featured-products-section">
         <FeaturedProductsSection />
       </section>

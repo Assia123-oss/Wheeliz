@@ -11,6 +11,40 @@
   --animate-spin: spin 1s linear infinite;
 }
 
+:root {
+  --car-scale: 1.4;
+  --car-height: -8.75rem;
+  
+  /* Cross-platform normalization */
+  --base-font-size: 16px;
+  --scale-factor: 1;
+}
+
+/* Force consistent sizing across all browsers and OS */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent text scaling */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 /* ONLY CAR ANIMATION - Remove all others */
 .animate-car-entrance {
   animation: car-entrance 4s ease-out forwards;
@@ -22,34 +56,34 @@
   }
 }
 
-/* Car Animation: Realistic mountain path following with scaling */
+/* Car Animation: Cross-platform compatible sizing */
 @keyframes car-entrance {
   0% {
-    transform: translateX(-120vw) translateY(20px) scale(0.2) rotate(-2deg);
+    transform: translateX(-120vw) translateY(1.25rem) scale(0.2) rotate(-2deg);
     opacity: 0;
   }
   15% {
-    transform: translateX(-80vw) translateY(15px) scale(0.4) rotate(-1deg);
+    transform: translateX(-80vw) translateY(0.94rem) scale(0.4) rotate(-1deg);
     opacity: 0.6;
   }
   30% {
-    transform: translateX(-50vw) translateY(8px) scale(0.6) rotate(0deg);
+    transform: translateX(-50vw) translateY(0.5rem) scale(0.6) rotate(0deg);
     opacity: 0.8;
   }
   45% {
-    transform: translateX(-25vw) translateY(2px) scale(0.8) rotate(1deg);
+    transform: translateX(-25vw) translateY(0.125rem) scale(0.8) rotate(1deg);
     opacity: 0.9;
   }
   60% {
-    transform: translateX(-5vw) translateY(-45px) scale(0.9) rotate(0deg);
+    transform: translateX(-5vw) translateY(-2.8rem) scale(0.9) rotate(0deg);
     opacity: 1;
   }
   80% {
-    transform: translateX(15vw) translateY(-90px) scale(1.1) rotate(0deg);
+    transform: translateX(15vw) translateY(-5.6rem) scale(1.1) rotate(0deg);
     opacity: 1;
   }
   100% {
-    transform: translateX(25vw) translateY(-140px) scale(1.6) rotate(0deg);
+    transform: translateX(25vw) translateY(-8.75rem) scale(1.4) rotate(0deg);
     opacity: 1;
   }
 }
@@ -110,8 +144,64 @@
   * {
     @apply border-border;
   }
+  
+  /* Cross-platform sizing normalization */
+  html {
+    font-size: 16px; /* Force consistent base font size */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* Prevent zoom differences */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Ensure consistent viewport units */
+  .car-container {
+    contain: layout style paint;
+  }
+  
+  /* Force consistent sizing for all sections */
+  section {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Fix text scaling issues */
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+  }
+  
+  /* Prevent Windows browser zoom issues */
+  .text-responsive {
+    font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+  }
+  
+  /* Force consistent button sizing */
+  button {
+    font-size: inherit;
+    line-height: inherit;
+  }
+  
+  /* Fix image scaling */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Main container fix for cross-platform consistency */
+  .cross-platform-fix {
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 }
